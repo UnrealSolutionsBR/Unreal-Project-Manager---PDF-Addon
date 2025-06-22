@@ -1,0 +1,9 @@
+{
+    "name": "smart-referrals/pdf-addon",
+    "require": {
+        "dompdf/dompdf": "^3.1",
+        "dompdf/php-font-lib": "^1.0",
+        "dompdf/php-svg-lib": "^1.0",
+        "masterminds/html5": "^2.9"
+    }
+}

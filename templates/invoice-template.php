@@ -24,11 +24,24 @@ $client_address = 'Santa Cruz de la Sierra, Bolivia';
     <meta charset="UTF-8">
     <title>Recibo <?= $receipt_code ?></title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        @page {
+            margin: 0;
+        }
+        html {
+            margin: 0;
+        }
         body {
+            margin: 0;
+            padding: 0;
             font-family: 'Arial', sans-serif;
             font-size: 13px;
-            padding: 40px;
             color: #1f2937;
+        }
+        .wrapper {
+            padding: 20px;
         }
         h1 {
             font-size: 22px;
@@ -92,7 +105,7 @@ $client_address = 'Santa Cruz de la Sierra, Bolivia';
     </style>
 </head>
 <body>
-
+    <div class="wrapper">
     <div class="header">
         <div>
             <img class="logo" src="https://unrealsolutions.com.br/wp-content/uploads/2023/08/Unreal-Solutions-Logo-white-with-icon.svg" alt="Unreal Solutions">
@@ -158,6 +171,6 @@ $client_address = 'Santa Cruz de la Sierra, Bolivia';
     <p class="footer-text">
         Si tiene algún problema con su orden (ejemplo: no reconoce el cobro o sospecha de fraude) por favor entre en contacto con: hola@unrealsolutions.com.br
     </p>
-
+    </div>
 </body>
 </html>

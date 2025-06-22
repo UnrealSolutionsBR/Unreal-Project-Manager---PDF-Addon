@@ -25,7 +25,8 @@ $contract_id = strtoupper('C_' . $post_id . '_' . date('Ymd'));
       font-family: sans-serif;
       font-size: 14px;
       color: #333;
-      padding: 40px;
+      padding: 0;
+      margin: 0;
     }
     h1, h2 {
       margin: 0 0 10px;

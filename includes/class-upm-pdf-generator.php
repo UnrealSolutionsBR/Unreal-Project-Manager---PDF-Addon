@@ -64,7 +64,9 @@ class UPM_PDF_Generator {
         $options->set('isRemoteEnabled', true);
         $dompdf = new Dompdf($options);
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->setPaper([
+			0, 0, 595.28, 841.89 // tamaño A4 en puntos, sin márgenes
+		]);
         $dompdf->render();
 
         $upload_dir = wp_upload_dir();

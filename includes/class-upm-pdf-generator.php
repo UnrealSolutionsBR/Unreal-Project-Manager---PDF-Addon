@@ -69,6 +69,15 @@ class UPM_PDF_Generator {
         $options->set('defaultFont', 'creepster');
     
         $dompdf = new Dompdf($options);
+
+        $dompdf = new Dompdf($options);
+
+        $dompdf->getFontMetrics()->registerFont(
+            'creepster',
+            'normal',
+            UPM_PDF_PATH . 'assets/fonts/creepster.ttf'
+        );
+
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();

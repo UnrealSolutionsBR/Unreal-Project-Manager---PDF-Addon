@@ -136,7 +136,7 @@ if (strtolower($status) === 'pagada' || strtolower($status) === 'pagado') {
     <div class="wrapper">
     <div class="header">
         <div>
-            <img class="logotype" src="img/logotype.svg" alt="Unreal Solutions">
+            <img class="logotype" src="https://unrealsolutions.com.br/wp-content/uploads/2023/10/Unreal-Solutions-Logo-Black.png" alt="Unreal Solutions">
             <h1>Recibo <span class="badge <?= esc_attr($badge_class) ?>"><?= strtoupper($status) ?></span></h1>
         </div>
     </div>

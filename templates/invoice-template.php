@@ -45,6 +45,10 @@ if (strtolower($status) === 'pagada' || strtolower($status) === 'pagado') {
             src: url('fonts/Montserrat-Bold.ttf') format('truetype');
             font-weight: bold;
         }
+        @font-face {
+            font-family: 'creepster';
+            src: url('./fonts/creepster.ttf') format('truetype');
+        }
         * {
             box-sizing: border-box;
         }
@@ -57,7 +61,7 @@ if (strtolower($status) === 'pagada' || strtolower($status) === 'pagado') {
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'creepster';
             font-weight: normal;
             font-size: 13px;
             color: #1f2937;

@@ -17,6 +17,12 @@ $project_title = $project_id ? get_the_title($project_id) : 'Sin proyecto asigna
 $client = get_user_by('ID', $client_id);
 $client_name = $client ? $client->display_name : 'Cliente sin nombre';
 $client_address = 'Santa Cruz de la Sierra, Bolivia';
+
+$badge_class = 'badge-pending';
+if (strtolower($status) === 'pagada' || strtolower($status) === 'pagado') {
+    $badge_class = 'badge-paid';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,20 +65,30 @@ $client_address = 'Santa Cruz de la Sierra, Bolivia';
         .wrapper {
             padding: 20px;
         }
+        .logotype{
+            width: 120px;
+            height: 52px;
+            margin-bottom: 10px;
+        }
         h1 {
             font-size: 22px;
             color: #111827;
             margin: 0;
         }
         .badge {
-            background-color: #ef4444;
-            color: white;
             font-size: 10px;
             font-weight: bold;
             padding: 4px 10px;
             border-radius: 6px;
             margin-left: 10px;
             vertical-align: middle;
+            color: white;
+        }
+        .badge-pending {
+            background-color: #FF686B;
+        }
+        .badge-paid {
+            background-color: #52B958;
         }
         .header, .footer {
             display: flex;
@@ -110,10 +126,6 @@ $client_address = 'Santa Cruz de la Sierra, Bolivia';
             margin-top: 40px;
             text-align: center;
         }
-        .logo {
-            width: 130px;
-            margin-bottom: 10px;
-        }
         .section-title {
             font-weight: bold;
             margin-bottom: 6px;
@@ -124,8 +136,8 @@ $client_address = 'Santa Cruz de la Sierra, Bolivia';
     <div class="wrapper">
     <div class="header">
         <div>
-            <img class="logo" src="https://unrealsolutions.com.br/wp-content/uploads/2023/08/Unreal-Solutions-Logo-white-with-icon.svg" alt="Unreal Solutions">
-            <h1>Recibo <span class="badge"><?= strtoupper($status) ?></span></h1>
+            <img class="logotype" src="img/logotype.svg" alt="Unreal Solutions">
+            <h1>Recibo <span class="badge <?= esc_attr($badge_class) ?>"><?= strtoupper($status) ?></span></h1>
         </div>
     </div>
 

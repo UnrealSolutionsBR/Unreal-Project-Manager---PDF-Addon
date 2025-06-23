@@ -24,6 +24,22 @@ $client_address = 'Santa Cruz de la Sierra, Bolivia';
     <meta charset="UTF-8">
     <title>Recibo <?= $receipt_code ?></title>
     <style>
+        @font-face {
+        font-family: 'Inter';
+        src: url('Inter.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Open Sans';
+        src: url('OpenSans-Regular.ttf') format('truetype');
+        font-weight: normal;
+    }
+    @font-face {
+        font-family: 'Open Sans';
+        src: url('OpenSans-Bold.ttf') format('truetype');
+        font-weight: bold;
+    } 
         * {
             box-sizing: border-box;
         }
@@ -36,7 +52,7 @@ $client_address = 'Santa Cruz de la Sierra, Bolivia';
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 13px;
             color: #1f2937;
         }

@@ -60,34 +60,39 @@ class UPM_PDF_Generator {
     }
 
     private static function generate_and_save_pdf($html, $filename, $project_id, $category) {
+        $fontDir = UPM_PDF_PATH . 'assets/fonts/';
+        
         $options = new Options();
         $options->set('isRemoteEnabled', true);
+        $options->setChroot($fontDir);
+        $options->set('fontDir', $fontDir);
+        $options->set('fontCache', $fontDir . 'cache');
+        $options->set('defaultFont', 'Inter');
+    
         $dompdf = new Dompdf($options);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-
+    
         $upload_dir = wp_upload_dir();
         $pdf_path = $upload_dir['path'] . '/' . $filename;
         file_put_contents($pdf_path, $dompdf->output());
-
-        // Subir a WordPress
+    
         $filetype = wp_check_filetype($filename, null);
         $attachment = [
             'post_mime_type' => $filetype['type'],
             'post_title'     => sanitize_file_name($filename),
             'post_status'    => 'inherit',
         ];
-
+    
         $attach_id = wp_insert_attachment($attachment, $pdf_path);
         require_once ABSPATH . 'wp-admin/includes/image.php';
         wp_generate_attachment_metadata($attach_id, $pdf_path);
-
+    
         $url = wp_get_attachment_url($attach_id);
         $size = size_format(filesize($pdf_path), 2);
-
-        // Registrar en CPT de archivos
-        $file_id = wp_insert_post([
+    
+        wp_insert_post([
             'post_type'    => 'upm_file',
             'post_title'   => $filename,
             'post_status'  => 'publish',
@@ -100,7 +105,7 @@ class UPM_PDF_Generator {
                 '_upm_auto_generated'  => '1',
             ]
         ]);
-    }
+    }    
 
     private static function get_invoice_template($post_id) {
         ob_start();

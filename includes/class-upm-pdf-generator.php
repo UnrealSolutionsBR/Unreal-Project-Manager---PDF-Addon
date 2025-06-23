@@ -60,13 +60,13 @@ class UPM_PDF_Generator {
     }
 
     private static function generate_and_save_pdf($html, $filename, $project_id, $category) {
-        $fontDir = UPM_PDF_PATH . 'assets/fonts/';
+        $assetsDir = UPM_PDF_PATH . 'assets/';
         
         $options = new Options();
         $options->set('isRemoteEnabled', true);
-        $options->setChroot($fontDir);
-        $options->set('fontDir', $fontDir);
-        $options->set('fontCache', $fontDir . 'cache');
+        $options->setChroot($assetsDir);
+        $options->set('fontDir', $assetsDir . 'fonts/');
+        $options->set('fontCache', $assetsDir . 'fonts/cache');
         $options->set('defaultFont', 'Inter');
     
         $dompdf = new Dompdf($options);

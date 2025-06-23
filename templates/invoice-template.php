@@ -32,20 +32,19 @@ if (strtolower($status) === 'pagada' || strtolower($status) === 'pagado') {
     <style>
         @font-face {
         font-family: 'Inter';
-        src: url('Inter.ttf') format('truetype');
+        src: url('fonts/Inter-Regular.ttf') format('truetype');
         font-weight: normal;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: 'Open Sans';
-        src: url('OpenSans-Regular.ttf') format('truetype');
-        font-weight: normal;
-    }
-    @font-face {
-        font-family: 'Open Sans';
-        src: url('OpenSans-Bold.ttf') format('truetype');
+        }
+        @font-face {
+        font-family: 'Inter';
+        src: url('fonts/Inter-Bold.ttf') format('truetype');
         font-weight: bold;
-    } 
+        }
+        @font-face {
+            font-family: Montserrat;
+            src: url('fonts/Montserrat-Bold.ttf') format('truetype');
+            font-weight: bold;
+        }
         * {
             box-sizing: border-box;
         }
@@ -59,6 +58,7 @@ if (strtolower($status) === 'pagada' || strtolower($status) === 'pagado') {
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
+            font-weight: normal;
             font-size: 13px;
             color: #1f2937;
         }
@@ -66,11 +66,11 @@ if (strtolower($status) === 'pagada' || strtolower($status) === 'pagado') {
             padding: 20px;
         }
         .logotype{
-            width: 120px;
-            height: 52px;
+            width: 140px;
             margin-bottom: 10px;
         }
         h1 {
+            font-family: 'Montserrat', sans-serif;
             font-size: 22px;
             color: #111827;
             margin: 0;
@@ -126,9 +126,9 @@ if (strtolower($status) === 'pagada' || strtolower($status) === 'pagado') {
             margin-top: 40px;
             text-align: center;
         }
-        .section-title {
+        .subtitle {
             font-weight: bold;
-            margin-bottom: 6px;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -137,25 +137,30 @@ if (strtolower($status) === 'pagada' || strtolower($status) === 'pagado') {
     <div class="header">
         <div>
             <img class="logotype" src="https://unrealsolutions.com.br/wp-content/uploads/2023/10/Unreal-Solutions-Logo-Black.png" alt="Unreal Solutions">
-            <h1>Recibo <span class="badge <?= esc_attr($badge_class) ?>"><?= strtoupper($status) ?></span></h1>
+            <h1>Recibo</h1>
+            <span class="badge <?= esc_attr($badge_class) ?>"><?= strtoupper($status) ?></span> 
         </div>
     </div>
 
     <div class="section" style="display: flex; justify-content: space-between;">
         <div>
-            <p class="section-title">Recibo para</p>
-            <table class="meta-table">
-                <tr><td><strong><?= esc_html($client_name) ?></strong></td></tr>
-                <tr><td>Sin nombre</td></tr>
-                <tr><td><?= esc_html($client_address) ?></td></tr>
-            </table>
-        </div>
-        <div>
-            <p class="section-title">Recibo de</p>
-            <table class="meta-table" style="text-align: right;">
-                <tr><td><strong>Unreal Solutions</strong></td></tr>
-                <tr><td>Avenida 7mo Anillo, Calle B. Casa #11</td></tr>
-                <tr><td>Santa Cruz de la Sierra, Bolivia</td></tr>
+            <table class="meta-table" style="width: 100%; margin-top: 20px;">
+            <tr>
+                <td class="subtitle">Recibo para</td>
+                <td class="subtitle" style="text-align:right;">Recibo de</td>
+            </tr>
+            <tr>
+                <td><?= esc_html($client_name) ?></td>
+                <td style="text-align:right;">Unreal Solutions</td>
+            </tr>
+            <tr>
+                <td>Sin nombre</td>
+                <td style="text-align:right;">Avenida 7mo Anillo, Calle B. Casa #11</td>
+            </tr>
+            <tr>
+                <td><?= esc_html($client_address) ?></td>
+                <td style="text-align:right;">Santa Cruz de la Sierra, Bolivia</td>
+            </tr>
             </table>
         </div>
     </div>

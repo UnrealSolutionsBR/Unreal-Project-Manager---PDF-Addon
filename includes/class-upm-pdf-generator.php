@@ -61,6 +61,8 @@ class UPM_PDF_Generator {
 
     private static function generate_and_save_pdf($html, $filename, $project_id, $category) {
         
+        $assetsDir = UPM_PDF_PATH . 'assets/';
+
         $options = new Options();
         $options->set('isRemoteEnabled', true);
         $options->setChroot(UPM_PDF_PATH . 'assets/');
